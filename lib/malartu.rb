@@ -8,25 +8,31 @@ require 'malartu/version'
 
 module Malartu
   API_VERSION = 'v0'.freeze
-  API_PATH = 'https://www.malartu.us/'.freeze
+  API_PATH = 'http://localhost:4000'.freeze
+  # API_PATH = 'https://api.malartu.co'.freeze
   class << self
-    attr_accessor :client, :token, :api_version, :topics
+    attr_accessor :apikey, :api_version, :topics
 
     def request(method, path, params = {}, _headers = {})
       url = "#{base_path}#{path}"
-      response = HTTP.send(method, url, json: params.merge(auth_params))
+      req_params = case method.to_s
+                   when 'get'
+                     { params: params.merge(auth_params) }
+                   else
+                     { json: params.merge(auth_params) }
+                   end
+      response = HTTP.send(method, url, req_params)
       check_for_errors(response, params.merge(auth_params))
       JSON.parse(response.body)
     end
 
     def auth_params
-      fail 'No client key present. Set it with `Malartu.client =`' if client.nil?
-      fail 'No token present. Set it with `Malartu.token =`' if token.nil?
-      { client: client, token: token }
+      fail 'No apikey present. Set it with `Malartu.apikey =`' if apikey.nil?
+      { apikey: apikey }
     end
 
     def base_path
-      "#{API_PATH}#{version}"
+      "#{API_PATH}/#{version}"
     end
 
     def version
@@ -39,8 +45,7 @@ module Malartu
         fail Malartu::Error::AuthorizationError.new(
           message: 'Credentials do not match',
           parameters: {
-            client: params[:client],
-            token: params[:token]
+            apikey: params[:apikey]
           },
           json_body: JSON.parse(response.body)
         )
@@ -50,6 +55,14 @@ module Malartu
           parameters: {
             id: params[:id],
             model: params[:model]
+          },
+          json_body: JSON.parse(response.body)
+        )
+      when 429
+        fail Malartu::Error::RateLimitError.new(
+          message: 'Rate Limited',
+          parameters: {
+            apikey: params[:apikey]
           },
           json_body: JSON.parse(response.body)
         )

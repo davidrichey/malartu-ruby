@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ['david-richey']
   spec.email         = ['david.richey@validic.com']
 
-  spec.summary       = %q{Wrapper for Malartu Reporting API}
-  spec.description   = %q{Wrapper for Malartu Reporting API}
-  spec.homepage      = 'http://www.malartufunds.us/kpi/api/docs'
+  spec.summary       = %q{Wrapper for Malartu API}
+  spec.description   = %q{Ruby Wrapper for Malartu API}
+  spec.homepage      = 'https://app.malartu.co/docs/api'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler', '~> 1.10'
-  spec.add_development_dependency 'rspec'
-  spec.add_dependency 'http'
+  spec.add_development_dependency 'rspec', '~> 3.1'
+  spec.add_development_dependency 'webmock', '~> 3.0'
+  spec.add_dependency 'http', '~> 3.0'
 end

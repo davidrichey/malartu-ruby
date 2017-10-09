@@ -13,6 +13,9 @@ module Malartu
     class AuthorizationError < MalartuError
     end
 
+    class RateLimitError < MalartuError
+    end
+
     class RecordNotFoundError < MalartuError
     end
 

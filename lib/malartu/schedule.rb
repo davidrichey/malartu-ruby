@@ -1,29 +1,38 @@
 module Malartu
   # A schedule is what tells Malartu when to aggregate the data
-  # Learn more at: TODO
   class Schedule
-    attr_accessor :integration, :timeframe, :pull_date, :last_ran_at, :json_body
-    def initialize(integration, timeframe, pull_date, last_ran_at, json_body)
-      @integration = integration
-      @timeframe = timeframe
-      @pull_date = pull_date
+    attr_accessor :active, :uid, :last_ran_at, :json_body
+    def initialize(active, uid, last_ran_at, json_body)
+      @active = active
+      @uid = uid
       @last_ran_at = last_ran_at
       @json_body = json_body
     end
 
     def self.find(id = 'api')
-      fail 'Invalid ID' unless id == 'api'
-      res = Malartu.request('get', "/schedule/#{id}")
-      Malartu::Schedule.new(res['integration'], res['timeframe'], res['pull_date'], res['last_ran_at'], res)
+      res = Malartu.request('get', "/kpi/schedules/#{id}")
+      Malartu::Schedule.new(res['active'], res['uid'], res['last_ran_at'], res)
     end
 
-    def self.update(id = 'api', timeframe: nil, pull_date: nil)
+    def self.list
+      res = Malartu.request('get', '/kpi/schedules')
+      puts res
+      res['schedules'].map do |schedule|
+        Malartu::Schedule.new(
+          schedule['active'],
+          schedule['uid'],
+          schedule['last_ran_at'],
+          schedule
+        )
+      end
+    end
+
+    def self.update(id = 'api', active: false)
       fail 'Invalid ID' unless id == 'api'
       params = {}
-      params[:timeframe] = timeframe unless timeframe.nil?
-      params[:pull_date] = pull_date unless timeframe.nil?
-      res = Malartu.request('patch', "/schedule/#{id}", params)
-      Malartu::Schedule.new(res['integration'], res['timeframe'], res['pull_date'], res['last_ran_at'], res)
+      params[:active] = active unless active.nil?
+      res = Malartu.request('patch', "/kpi/schedules/#{id}", params)
+      Malartu::Schedule.new(res['active'], res['uid'], res['last_ran_at'], res)
     end
   end
 end

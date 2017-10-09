@@ -5,14 +5,9 @@ describe Malartu do
     expect(Malartu::VERSION).not_to be nil
   end
 
-  it 'sets the client' do
-    Malartu.client = 'client123'
-    expect(Malartu.client).to eq 'client123'
-  end
-
-  it 'sets the token' do
-    Malartu.token = 'token123'
-    expect(Malartu.token).to eq 'token123'
+  it 'sets the apikey' do
+    Malartu.apikey = 'apikey123'
+    expect(Malartu.apikey).to eq 'apikey123'
   end
 
   context 'api_version' do
@@ -30,7 +25,7 @@ describe Malartu do
   context 'check_for_errors' do
     it 'raises AuthorizationError' do
       resp = double('response', code: 401, body: { test: 'me' }.to_json)
-      params = { client: 'client', token: 'token' }
+      params = { client: 'client', apikey: 'apikey' }
       expect do
         described_class.check_for_errors(resp, params)
       end.to raise_error(Malartu::Error::AuthorizationError)
@@ -38,7 +33,7 @@ describe Malartu do
 
     it 'raises RecordNotFoundError' do
       resp = double('response', code: 404, body: { test: 'me' }.to_json)
-      params = { client: 'client', token: 'token' }
+      params = { client: 'client', apikey: 'apikey' }
       expect do
         described_class.check_for_errors(resp, params)
       end.to raise_error(Malartu::Error::RecordNotFoundError)
@@ -46,7 +41,7 @@ describe Malartu do
 
     it 'raises ServerError' do
       resp = double('response', code: 500, body: { test: 'me' }.to_json)
-      params = { client: 'client', token: 'token' }
+      params = { client: 'client', apikey: 'apikey' }
       expect do
         described_class.check_for_errors(resp, params)
       end.to raise_error(Malartu::Error::ServerError)
