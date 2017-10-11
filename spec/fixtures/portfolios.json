@@ -1,0 +1,27 @@
+{
+   "portfolios":[
+      {
+         "sid":"b987459f-7b3c-4a7e-a3df-18388cee8aab",
+         "path":"/v0/kpi/portfolios/b987459f-7b3c-4a7e-a3df-18388cee8aab",
+         "name":"One",
+         "metrics":[
+            {
+               "uid":"accounts_payable",
+               "name":"Accounts Payable"
+            },
+            {
+               "uid":"accounts_receivable",
+               "name":"Accounts Receivable"
+            },
+            {
+               "uid":"adsense_ctr",
+               "name":"Adsense CTR"
+            },
+            {
+               "uid":"adsense_revenue",
+               "name":"Adsense Revenue"
+            }
+         ]
+      }
+   ]
+}

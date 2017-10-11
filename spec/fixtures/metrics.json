@@ -1,0 +1,22 @@
+{
+   "timezone":"America/New_York",
+   "start_time":"2017-09-03T00:00:00-04:00",
+   "metrics":{
+      "accounts_payable":{
+         "grain":"week",
+         "data":[
+            {
+               "value":435.0,
+               "date":"2017-09-03"
+            },
+            {
+               "value":324.0,
+               "date":"2017-09-10"
+            }
+         ],
+         "aggregate":324.0
+      }
+   },
+   "grain":"week",
+   "end_time":"2017-09-10T23:59:59-04:00"
+}

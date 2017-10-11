@@ -5,7 +5,7 @@ describe Malartu::Schedule do
     it 'makes GET request and request schedule' do
       res = { uid: 'api', last_ran_at: Date.today.to_s, active: true }.to_json
       stub_request(:get, "#{Malartu.base_path}/kpi/schedules/api?apikey=#{Malartu.apikey}")
-        .to_return(status: 201, body: res, headers: {"Content-Type"=>"application/json"})
+        .to_return(status: 200, body: res, headers: {"Content-Type"=>"application/json"})
       sch = Malartu::Schedule.find('api')
       expect(sch.active).to eq true
       expect(sch.uid).to eq 'api'
@@ -18,7 +18,7 @@ describe Malartu::Schedule do
     it 'makes GET request and request schedule' do
       res = { schedules: [{uid: 'api', last_ran_at: Date.today.to_s, active: true }] }.to_json
       stub_request(:get, "#{Malartu.base_path}/kpi/schedules?apikey=#{Malartu.apikey}")
-        .to_return(status: 201, body: res)
+        .to_return(status: 200, body: res)
       schedules = Malartu::Schedule.list
       expect(schedules.count).to eq 1
       expect(schedules.first.uid).to eq 'api'
@@ -32,7 +32,7 @@ describe Malartu::Schedule do
     it 'makes GET request and request schedule' do
       res = { uid: 'api', last_ran_at: Date.today.to_s, active: true }.to_json
       stub_request(:patch, "#{Malartu.base_path}/kpi/schedules/api")
-        .to_return(status: 201, body: res)
+        .to_return(status: 200, body: res)
       sch = Malartu::Schedule.update('api', active: true)
       expect(sch.uid).to eq 'api'
       expect(sch.active).to eq true
