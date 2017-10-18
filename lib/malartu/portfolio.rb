@@ -1,14 +1,15 @@
 module Malartu
   # A portfolio is how groups track companies within Malartu
-  class Portfolio
-    attr_accessor :sid, :name, :connections, :path
+  class Portfolio < MalartuObject
+    attr_accessor :connections, :path
     def initialize(json)
-      @sid = json['sid']
-      @name = json['name']
-      @connections = json['connections'].map do |c|
-        Malartu::Connection.new(c)
+      super
+      define_singleton_method('connections') do
+        json['connections'].map do |c|
+          Malartu::Connection.new(c)
+        end
       end if json['connections']
-      @path = json['path'] || "/v0/kpi/portfolios/#{@sid}"
+      define_singleton_method('path') { json['path'] || "/v0/kpi/portfolios/#{sid}" }
     end
 
     def self.find(sid)

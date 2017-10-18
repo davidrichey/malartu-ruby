@@ -1,5 +1,6 @@
 require 'http'
 
+require 'malartu/malartu_object'
 require 'malartu/connection'
 require 'malartu/error'
 require 'malartu/metric'

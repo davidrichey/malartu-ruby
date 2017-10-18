@@ -1,15 +1,6 @@
 module Malartu
   # A connection is what ties together a company and a portfolios
-  class Connection
-    attr_accessor :access_date, :company_id, :json_body, :metrics_path, :state
-    def initialize(connection)
-      @access_date = connection['access_date']
-      @company_id = connection['company_id']
-      @json_body = connection
-      @metrics_path = connection['metrics_path']
-      @state = connection['state']
-    end
-
+  class Connection < MalartuObject
     def self.list
       res = Malartu.request('get', '/kpi/connections')
       res['connections'].map do |connection|

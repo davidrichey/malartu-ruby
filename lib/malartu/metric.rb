@@ -1,6 +1,6 @@
 module Malartu
   # Metrics is how Malartu tracks data from various sources
-  class Metric
+  class Metric < MalartuObject
     def self.uids
       Malartu.request('get', '/kpi/metric/uids')['valid_metric_uids']
     end

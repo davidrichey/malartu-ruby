@@ -1,14 +1,6 @@
 module Malartu
   # A schedule is what tells Malartu when to aggregate the data
-  class Schedule
-    attr_accessor :active, :uid, :last_ran_at, :json_body
-    def initialize(json)
-      @active = json['active']
-      @uid = json['uid']
-      @last_ran_at = json['last_ran_at']
-      @json_body = json
-    end
-
+  class Schedule < MalartuObject
     def self.find(id = 'api')
       res = Malartu.request('get', "/kpi/schedules/#{id}")
       Malartu::Schedule.new(res)
