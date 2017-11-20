@@ -12,8 +12,7 @@ require 'malartu/version'
 
 module Malartu
   API_VERSION = 'v0'.freeze
-  API_PATH = 'http://localhost:4000'.freeze
-  # API_PATH = 'https://api.malartu.co'.freeze
+  API_PATH = 'https://api.malartu.co'.freeze
   class << self
     attr_accessor :apikey, :api_version, :topics
 

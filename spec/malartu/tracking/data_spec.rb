@@ -43,7 +43,7 @@ describe Malartu::Tracking::Data do
 
   context '#list' do
     it 'sends GET to url' do
-      res = { page: 1, found: 24, data: [{ id: 12, topic: 'test', value: 105, path: '/kpi/tracking/data/7587' }] }.to_json
+      res = { page: 1, found: 24, count: 24, limit: 25, data: [{ id: 12, topic: 'test', value: 105, path: '/kpi/tracking/data/7587' }] }.to_json
       stub_request(:get, "#{Malartu.base_path}/kpi/tracking/data?starting=2017-01-01&ending=2017-01-20&apikey=#{Malartu.apikey}&page=1")
         .to_return(status: 200, body: res)
       data = described_class.list(starting: '2017-01-01', ending: '2017-01-20')
@@ -55,7 +55,7 @@ describe Malartu::Tracking::Data do
     end
 
     it 'sends GET to url - paginated' do
-      res = { page: 1, found: 50, data: [{ id: 12, topic: 'test', value: 105, path: '/kpi/tracking/data/7587' }] }.to_json
+      res = { page: 1, found: 50, count: 25, limit: 25, data: [{ id: 12, topic: 'test', value: 105, path: '/kpi/tracking/data/7587' }] }.to_json
       resend = { page: 2, found: 50, data: [{ id: 12, topic: 'test', value: 105, path: '/kpi/tracking/data/7587' }] }.to_json
       stub_request(:get, "#{Malartu.base_path}/kpi/tracking/data?starting=2017-01-01&ending=2017-01-20&apikey=#{Malartu.apikey}&page=1")
         .to_return(status: 200, body: res)

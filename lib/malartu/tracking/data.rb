@@ -22,7 +22,7 @@ module Malartu
           Malartu::Tracking::Data.new(datum)
         end
         page = res["page"].to_i
-        return data unless paginate && res['found'].to_i >= (25 * page)
+        return data unless paginate?(res)
         # Paginated requests
         res = Malartu.request('get', '/kpi/tracking/data', params.merge(page: page + 1))
         data + res['data']

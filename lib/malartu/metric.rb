@@ -5,7 +5,7 @@ module Malartu
       Malartu.request('get', '/kpi/metric/uids')['valid_metric_uids']
     end
 
-    def self.list(starting: nil, ending: DateTime.now.to_s, grain: nil, timezone: "UTC", uids: [])
+    def self.list(starting: nil, ending: Date.today.to_s, grain: nil, timezone: 'UTC', uids: [])
       uids = uids.join(',')
       params = {
         start_date: starting,
