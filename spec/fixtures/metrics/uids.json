@@ -1,0 +1,3 @@
+{
+  "valid_metric_uids": ["accounts_payable", "accounts_receivable", "adsense_ctr", "adsense_revenue", "advertising_expense", "arr", "arr_per_customer", "asdf-userdefinedmetric", "average_revenue_per_account", "mrr", "one-custommetric", "one_time_charges", "revenue", "total_customers", "visits"]
+}

@@ -27,7 +27,7 @@ Set your apikey
 
 Use the endpoints
 ```
-Malartu::Tracking::Metric.list
+Malartu::Tracking::Data.list(starting: (Date.today - 5.days).to_s, ending: Date.today.to_s)
 Malartu::Schedule.list
 ```
 

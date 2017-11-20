@@ -1,9 +1,13 @@
 require 'http'
 
+require 'malartu/malartu_object'
+require 'malartu/connection'
 require 'malartu/error'
+require 'malartu/metric'
+require 'malartu/portfolio'
 require 'malartu/schedule'
 require 'malartu/tracking'
-require 'malartu/tracking/metric'
+require 'malartu/tracking/data'
 require 'malartu/version'
 
 module Malartu

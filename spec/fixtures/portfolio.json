@@ -1,0 +1,74 @@
+{
+   "sid":"b987459f-7b3c-4a7e-a3df-18388cee8aab",
+   "name":"One",
+   "metrics":[
+      {
+         "uid":"accounts_payable",
+         "name":"Accounts Payable"
+      },
+      {
+         "uid":"accounts_receivable",
+         "name":"Accounts Receivable"
+      },
+      {
+         "uid":"adsense_ctr",
+         "name":"Adsense CTR"
+      },
+      {
+         "uid":"adsense_revenue",
+         "name":"Adsense Revenue"
+      }
+   ],
+   "connections":[
+      {
+         "state":"connected",
+         "portfolio_path":"/v0/kpi/portfolios/b987459f-7b3c-4a7e-a3df-18388cee8aab",
+         "metrics_path":"/v0/kpi/connections/1/metrics",
+         "metrics":[
+            {
+               "uid":"accounts_payable",
+               "name":"Accounts Payable"
+            },
+            {
+               "uid":"accounts_receivable",
+               "name":"Accounts Receivable"
+            },
+            {
+               "uid":"adsense_ctr",
+               "name":"Adsense CTR"
+            },
+            {
+               "uid":"adsense_revenue",
+               "name":"Adsense Revenue"
+            }
+         ],
+         "company_id":1,
+         "access_date":"2017-10-10"
+      },
+      {
+         "state":"pending",
+         "portfolio_path":"/v0/kpi/portfolios/b987459f-7b3c-4a7e-a3df-18388cee8aab",
+         "metrics_path": null,
+         "metrics":[
+            {
+               "uid":"accounts_payable",
+               "name":"Accounts Payable"
+            },
+            {
+               "uid":"accounts_receivable",
+               "name":"Accounts Receivable"
+            },
+            {
+               "uid":"adsense_ctr",
+               "name":"Adsense CTR"
+            },
+            {
+               "uid":"adsense_revenue",
+               "name":"Adsense Revenue"
+            }
+         ],
+         "company_id":2,
+         "access_date":"2017-10-11"
+      }
+   ]
+}
