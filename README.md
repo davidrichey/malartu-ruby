@@ -1,8 +1,12 @@
 # Malartu
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/malartu`. To experiment with that code, run `bin/console` for an interactive prompt.
+Malartu API makes it easy to interact with [Malartu](https://www.malartu.co/). This gem is a ruby wrapper for the [Malartu API](https://app.malartu.co/docs/api).
 
-TODO: Delete this and the text above, and describe your gem
+Some examples of what you can do with the Malartu API:
+
+* Track custom metrics to be aggregated into your other integrations data. See what [integration Malartu provides](https://www.malartu.co/integrations/)
+* View your aggregated metrics
+* View your reports created in Malartu
 
 ## Installation
 
@@ -25,8 +29,10 @@ Or install it yourself as:
 Set your apikey
 `Malartu.apikey = 'XXXXX-XXXXXXXXXXXXXXX'`
 
-Use the endpoints
+Start extending your usage with the Malartu API
 ```
+Malartu::Metric.uids # valid uids you are tracking in Malartu
+Malartu::Metric.list(starting: (Date.today - 5.days).to_s, ending: Date.today.to_s, uids: ['arr', 'mrr'])
 Malartu::Tracking::Data.list(starting: (Date.today - 5.days).to_s, ending: Date.today.to_s)
 Malartu::Schedule.list
 ```
@@ -36,12 +42,9 @@ Malartu::Schedule.list
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/davidrichey/malartu-ruby. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
-
 
 ## License
 
